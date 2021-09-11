@@ -1,0 +1,24 @@
+{
+  "name": "banh8",
+  "version": "1.0.0",
+  "description": "twitch bot to auto-ban hate bots and follow bots",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phlare/banh8.git"
+  },
+  "keywords": [],
+  "author": "Phlare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phlare/banh8/issues"
+  },
+  "homepage": "https://github.com/phlare/banh8#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "tmi.js": "^1.8.5"
+  }
+}
