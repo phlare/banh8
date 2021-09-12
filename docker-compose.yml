@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # mongodb:
+  #   image: mongo:4
+  #   ports:
+  #       - 27017:27017
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"
+    environment:
+      TWITCH_OAUTH_TOKEN: oauth:2x2i8s921e4ud7gw8x8zfcj3huxlkc
+      MONGO_URL: mongodb
+    # links:
+    #   - mongodb
+    # depends_on:
+    #   - mongodb
+      

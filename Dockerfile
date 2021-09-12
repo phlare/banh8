@@ -3,4 +3,4 @@ WORKDIR /usr/src/app
 COPY package*.json index.js ./
 RUN npm install
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD node -r dotenv/config ./index.js
