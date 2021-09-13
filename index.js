@@ -13,9 +13,9 @@ const client = new tmi.Client({
   channels: [
     // 'banh8',
     'phlare',
-    // 'j_blazed',
-    // 'kingjayfps',
-    // 'sabi_gaming'
+    'j_blazed',
+    'kingjayfps',
+    'sabi_gaming'
   ]
 });
 
