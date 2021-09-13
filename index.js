@@ -1,5 +1,4 @@
 const tmi = require('tmi.js');
-require('dotenv').config();
 
 const client = new tmi.Client({
   options: { debug: true },
@@ -11,7 +10,13 @@ const client = new tmi.Client({
     username: 'banh8',
     password: process.env.TWITCH_OAUTH_TOKEN
   },
-  channels: ['banh8', 'phlare', 'j_blazed']
+  channels: [
+    // 'banh8',
+    'phlare',
+    // 'j_blazed',
+    // 'kingjayfps',
+    // 'sabi_gaming'
+  ]
 });
 
 const regexBanList = [
@@ -47,7 +52,7 @@ client.connect();
 
 client.on('join', (channel, username) => {
   if (client.getUsername() === username) {
-    client.say(channel, `banh8 checking in, ready for duty <3`);
+    client.say(channel, `Checking in, ready for duty <3 !banh8`);
   }
 });
 
@@ -84,7 +89,7 @@ client.on('message', (channel, tags, message, self) => {
   const command = args.shift().toLowerCase();
 
   if (command === 'banh8') {
-    client.say(channel, `banh8 is a bot created by @Phlare to help fight the follow/hate bots running rampant lately. This is a work in progress, but if you wish to be added to the monitored channels, jump into phlare's discord and ask about it. https://discord.com/invite/aevtVaSBpN`)
+    client.say(channel, `banh8 is a bot created by @Phlare to help fight the follow/hate bots running rampant lately. This is a work in progress, but if you wish to be added to the monitored channels, jump into phlare's discord and ask in the banh8 channels about it. https://discord.com/invite/aevtVaSBpN`)
   } else if(command === 'echo') {
     // client.say(channel, `@${tags.username}, you said: "${args.join(' ')}"`);
   } else if(command === 'hello') {
