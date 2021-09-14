@@ -11,11 +11,13 @@ const client = new tmi.Client({
     password: process.env.TWITCH_OAUTH_TOKEN
   },
   channels: [
-    'banh8',
-    // 'phlare',
-    // 'j_blazed',
-    // 'kingjayfps',
-    // 'sabi_gaming'
+    // 'banh8',
+    'phlare',
+    'j_blazed',
+    'kingjayfps',
+    'sabi_gaming',
+    'pinkbubbblez',
+    'bosmang4beltalowda'
   ]
 });
 
