@@ -11,17 +11,18 @@ const client = new tmi.Client({
     password: process.env.TWITCH_OAUTH_TOKEN
   },
   channels: [
-    // 'banh8',
-    'phlare',
-    'j_blazed',
-    'kingjayfps',
-    'sabi_gaming'
+    'banh8',
+    // 'phlare',
+    // 'j_blazed',
+    // 'kingjayfps',
+    // 'sabi_gaming'
   ]
 });
 
 const regexBanList = [
+  /nasime[0-9_]+/,
   /manolia/,
-  /h[o0][st]+[0-9\_]+/,
+  /h[o0][st]+[0-9a-z\_]+/,
   /ryerher/
 ];
 
@@ -65,7 +66,7 @@ client.on('message', (channel, tags, message, self) => {
     const followRegexList = [
       /([a-z0-9_]+) has joined/,
       /([a-z0-9_]+) has followed/,
-      /a wild ([a-z0-9_]+) appears/, // tabatha_sabbatha
+      /a wild ([a-z0-9_]+) (appears|has appeared)/, // tabatha_sabbatha
       /follow,? ([a-z0-9_]+) ?!?/, // testing
       /following,? ([a-z0-9_]+) ?!?/, // default streamlabs follow message
       /following!? ([a-z0-9_]+) :\)/, // default streamelements follow message
