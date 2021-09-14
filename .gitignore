@@ -10,6 +10,7 @@ lerna-debug.log*
 banh8-deployment.yml
 deploy.sh
 logs.sh
+localrun.sh
 
 # version file
 prod.version.txt
