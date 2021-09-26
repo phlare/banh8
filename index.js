@@ -47,7 +47,6 @@ client.on('message', (channel, tags, message, self) => {
   // Ignore echoed messages.
   if(self) return;
   if(['follow','join'].indexOf(message) !== false) {
-    console.log('here');
     // set of regex patterns to use to catch follower usernames from welcome messages
     const followRegexList = [
       /([a-z0-9_]+) has joined/,
