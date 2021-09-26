@@ -17,6 +17,8 @@ const obviouslySafeUserNames = [
   'you'
 ];
 
+let sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const checkUser = (channel, username) => {
   // ok, now check username against our list of bannable fuckers
   // client.say(channel, `i see you, @${username}`);
@@ -71,18 +73,31 @@ client.on('message', (channel, tags, message, self) => {
     return;
   }
 
+  let isMod = (`#${tags.username}` === channel || tags.mod);
   const args = message.slice(1).split(' ');
   const command = args.shift().toLowerCase();
 
   if (command === 'banh8') {
     client.say(channel, `banh8 is a bot created by @Phlare to help fight the follow/hate bots running rampant lately. If you wish to be added to the monitored channels, jump into phlare's discord and ask in the banh8 section about it. https://discord.com/invite/aevtVaSBpN`)
-  } else if(command === 'echo') {
-    // client.say(channel, `@${tags.username}, you said: "${args.join(' ')}"`);
-  } else if(command === 'hello') {
-    // client.say(channel, `@${tags.username}, Yo what's up`);
-  } else if(command === 'dice') {
-    // const result = Math.floor(Math.random() * 6) + 1;
-    // client.say(channel, `@${tags.username}, You rolled a ${result}.`);
+    sleep(1500).then(() => {client.say(channel, `moderators can use !panic and !relax to enter and leave hate raid mode`)});
+  } else if(command === 'd6') {
+    const result = Math.floor(Math.random() * 6) + 1;
+    client.say(channel, `@${tags.username}, You rolled a ${result}.`);
+  } else if(command === 'panic' && isMod) {
+    client.say(channel, '/clear');
+    client.say(channel, `Panic Mode initializing...`);
+    sleep(1500).then(() => {
+      client.say(channel, `Clearing Chat, turning on sub-only mode and slow mode.`);
+      client.say(channel, `/subscribers`);
+      client.say(channel, `/slow 10`);
+      sleep(1500).then(() => {
+        client.say(channel, `Now would be a good time to set a marker and run an ad. Type !relax to resume normal chat`);
+      });
+    });
+  } else if (command === 'relax' && isMod) {
+    client.say(channel, `Relax now, panic mode ending. Spread love, not hate. <3 <3`);
+    client.say(channel, '/subscribersoff');
+    client.say(channel, '/slowoff');
   }
 
 });
