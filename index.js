@@ -1,25 +1,7 @@
 const tmi = require('tmi.js');
+const config = require('./config.js');
 
-const client = new tmi.Client({
-  options: { debug: true },
-  connection: {
-    secure: true,
-    reconnect: true
-  },
-  identity: {
-    username: 'banh8',
-    password: process.env.TWITCH_OAUTH_TOKEN
-  },
-  channels: [
-    // 'banh8',
-    'phlare',
-    'j_blazed',
-    'kingjayfps',
-    'sabi_gaming',
-    'pinkbubbblez',
-    'bosmang4beltalowda'
-  ]
-});
+const client = new tmi.Client(config.client);
 
 const regexBanList = [
   /nasime[0-9_]+/,
@@ -30,7 +12,9 @@ const regexBanList = [
 
 const obviouslySafeUserNames = [
   'and',
-  'me'
+  'me',
+  'back',
+  'you'
 ];
 
 const checkUser = (channel, username) => {
@@ -62,8 +46,8 @@ client.on('join', (channel, username) => {
 client.on('message', (channel, tags, message, self) => {
   // Ignore echoed messages.
   if(self) return;
-
   if(['follow','join'].indexOf(message) !== false) {
+    console.log('here');
     // set of regex patterns to use to catch follower usernames from welcome messages
     const followRegexList = [
       /([a-z0-9_]+) has joined/,
@@ -92,7 +76,7 @@ client.on('message', (channel, tags, message, self) => {
   const command = args.shift().toLowerCase();
 
   if (command === 'banh8') {
-    client.say(channel, `banh8 is a bot created by @Phlare to help fight the follow/hate bots running rampant lately. This is a work in progress, but if you wish to be added to the monitored channels, jump into phlare's discord and ask in the banh8 channels about it. https://discord.com/invite/aevtVaSBpN`)
+    client.say(channel, `banh8 is a bot created by @Phlare to help fight the follow/hate bots running rampant lately. If you wish to be added to the monitored channels, jump into phlare's discord and ask in the banh8 section about it. https://discord.com/invite/aevtVaSBpN`)
   } else if(command === 'echo') {
     // client.say(channel, `@${tags.username}, you said: "${args.join(' ')}"`);
   } else if(command === 'hello') {
