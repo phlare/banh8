@@ -5,9 +5,9 @@ const client = new tmi.Client(config.client);
 
 const regexBanList = [
   /nasime[0-9_]+/,
-  /manolia/,
-  /h[o0][st]+[0-9a-z\_]+/,
-  /ryerher/
+  /h[o0-9]+[st]+[0-9a-z\_]+/,
+  /(ryerher|gunz_0|kara_mella23|zachsapttv|manolia|horny_portal|drxiphph|0x45e)/
+
 ];
 
 const obviouslySafeUserNames = [
