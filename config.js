@@ -44,7 +44,8 @@ const Config = () => {
             'sabi_gaming',
             'pinkbubbblez',
             'bosmang4beltalowda',
-            'bigpoppacomi'
+            'bigpoppacomi',
+            'valorousdarke'
           ]
         }
       };
