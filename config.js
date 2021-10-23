@@ -45,7 +45,8 @@ const Config = () => {
             'pinkbubbblez',
             'bosmang4beltalowda',
             'bigpoppacomi',
-            'valorousdarke'
+            'valorousdarke',
+            'brandanthemandan'
           ]
         }
       };
