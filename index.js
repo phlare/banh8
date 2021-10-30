@@ -5,13 +5,13 @@ const client = new tmi.Client(config.client);
 
 const regexBanList = [
   /nasime[0-9_]+/,
-  /h[o0-9]+[st]+[0-9a-z\_]+/,
+  /h[o0-9]+[s]+[0-9a-z\_]+/,
   /gunq[0-9]+/,
   /(ryerher|gunz_0|kara_mella23|zachsapttv|manolia|horny_portal|drxiphph|0x45e)/
 
 ];
 
-const obviouslySafeUserNames = [
+const whiteListedNames = [
   'and',
   'me',
   'back',
@@ -24,7 +24,7 @@ const checkUser = (channel, username) => {
   // ok, now check username against our list of bannable fuckers
   // client.say(channel, `i see you, @${username}`);
   // if it's in our obviously safe list, ignore.
-  if (obviouslySafeUserNames.indexOf(username) !== -1) {
+  if (whiteListedNames.indexOf(username) !== -1) {
     console.log(`ignoring ${username} because duh`);
     return;
   }
